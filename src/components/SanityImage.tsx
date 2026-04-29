@@ -24,13 +24,16 @@ export function SanityImage({
     return null;
   }
 
+  const eagerLoading = preload ? undefined : loading;
+  const imageFetchPriority = preload ? undefined : fetchPriority;
+
   return (
     <Image
       src={image.url}
       alt={image.alt || alt}
       fill
-      fetchPriority={fetchPriority}
-      loading={loading}
+      fetchPriority={imageFetchPriority}
+      loading={eagerLoading}
       preload={preload}
       sizes={sizes}
       placeholder={image.lqip ? "blur" : "empty"}

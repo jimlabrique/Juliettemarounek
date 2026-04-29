@@ -31,26 +31,29 @@ export default async function WorkPage() {
       <BrandLogo className="mx-auto h-auto w-[92vw] max-w-none" />
       <div className="mt-20 grid gap-0 md:mt-24 md:grid-cols-2 md:[&>a:first-child>div]:rounded-tr-[18px] md:[&>a:nth-child(2)>div]:rounded-tl-[18px] lg:mt-[9.5vh]">
         {projects.map((project, projectIndex) =>
-          getWorkThumbnails(project).map((image, index) => (
-            <Link
-              key={`${project._id}-${index}`}
-              href={`/work/${project.slug}`}
-              aria-label={`Open ${project.title}`}
-              className="group block"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden bg-zinc-950">
-                <SanityImage
-                  image={image}
-                  alt={`${project.title} thumbnail ${index + 1}`}
-                  fetchPriority={projectIndex === 0 ? "high" : undefined}
-                  loading={projectIndex === 0 ? "eager" : undefined}
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover transition duration-500 group-hover:scale-[1.015]"
-                />
-              </div>
-              <span className="sr-only">{project.title}</span>
-            </Link>
-          )),
+          getWorkThumbnails(project).map((image, index) => {
+            const preloadImage = projectIndex === 0;
+
+            return (
+              <Link
+                key={`${project._id}-${index}`}
+                href={`/work/${project.slug}`}
+                aria-label={`Open ${project.title}`}
+                className="group block"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-zinc-950">
+                  <SanityImage
+                    image={image}
+                    alt={`${project.title} thumbnail ${index + 1}`}
+                    preload={preloadImage}
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition duration-500 group-hover:scale-[1.015]"
+                  />
+                </div>
+                <span className="sr-only">{project.title}</span>
+              </Link>
+            );
+          }),
         )}
       </div>
       {projects.length === 0 ? (

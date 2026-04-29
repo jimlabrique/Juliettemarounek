@@ -25,8 +25,7 @@ export default async function AboutPage() {
             <SanityImage
               image={about.portrait}
               alt="JULIETTEMAROUNEK portrait"
-              fetchPriority="high"
-              loading="eager"
+              preload
               sizes="(min-width: 1024px) 55vw, 100vw"
               className="object-cover object-[center_12%]"
             />
