@@ -51,13 +51,13 @@ export function SiteNavigation({ logoText }: SiteNavigationProps) {
         <StaticSvg
           src="/brand/svg/director-typo.svg"
           alt="Director / Art Director"
-          className="pointer-events-none fixed bottom-[3.8vh] left-5 h-auto w-[190px] md:left-[4.2vw] md:w-[265px]"
+          className="pointer-events-none fixed bottom-[3.8vh] left-5 hidden h-auto w-[190px] md:block md:left-[4.2vw] md:w-[265px]"
         />
       ) : null}
       <Link
         href="/"
         aria-label="Home"
-        className="pointer-events-auto fixed bottom-[3.5vh] right-5 block h-auto w-[46px] md:right-[2.4vw] md:w-[66px]"
+        className="pointer-events-auto fixed bottom-[3.5vh] right-5 hidden h-auto w-[46px] md:block md:right-[2.4vw] md:w-[66px]"
       >
         <StaticSvg src="/brand/svg/picto.svg" alt="" ariaHidden className="pointer-events-none h-auto w-full" />
       </Link>
