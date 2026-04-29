@@ -1,11 +1,6 @@
-import type { Metadata } from "next";
 import { getSiteSettings } from "@/sanity/data";
 
 export const revalidate = 60;
-
-export const metadata: Metadata = {
-  title: "Contact",
-};
 
 export default async function ContactPage() {
   const settings = await getSiteSettings();

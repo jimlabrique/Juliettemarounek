@@ -1,13 +1,8 @@
-import type { Metadata } from "next";
 import { SanityImage } from "@/components/SanityImage";
 import { StaticSvg } from "@/components/StaticSvg";
 import { getAboutPage, getSiteSettings } from "@/sanity/data";
 
 export const revalidate = 60;
-
-export const metadata: Metadata = {
-  title: "About",
-};
 
 export default async function AboutPage() {
   const [about, settings] = await Promise.all([getAboutPage(), getSiteSettings()]);

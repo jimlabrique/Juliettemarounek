@@ -24,10 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://juliettemarounek.com",
   ),
-  title: {
-    default: "JULIETTEMAROUNEK",
-    template: "%s | JULIETTEMAROUNEK",
-  },
+  title: "JULIETTEMAROUNEK",
   description: "Portfolio of JULIETTEMAROUNEK, director and art director.",
   openGraph: {
     title: "JULIETTEMAROUNEK",

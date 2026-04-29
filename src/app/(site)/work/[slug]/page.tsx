@@ -23,15 +23,12 @@ export async function generateMetadata({
   const project = await getProject(slug);
 
   if (!project) {
-    return {
-      title: "Work",
-    };
+    return {};
   }
 
   const image = project.thumbnail?.url || project.posterImage?.url;
 
   return {
-    title: project.title,
     openGraph: {
       title: `${project.title} | JULIETTEMAROUNEK`,
       images: image ? [{ url: image }] : undefined,

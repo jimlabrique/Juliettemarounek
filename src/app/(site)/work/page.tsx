@@ -1,5 +1,4 @@
 import Link from "next/link";
-import type { Metadata } from "next";
 import { BrandLogo } from "@/components/BrandLogo";
 import { SanityImage } from "@/components/SanityImage";
 import { getProjects } from "@/sanity/data";
@@ -9,10 +8,6 @@ import type {
 } from "@/sanity/types";
 
 export const revalidate = 60;
-
-export const metadata: Metadata = {
-  title: "Work",
-};
 
 function getWorkThumbnails(project: ProjectSummary): SanityImageType[] {
   const primary = project.thumbnail ?? project.workStill ?? project.posterImage;
