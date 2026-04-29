@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffe4;
+  --cream: #ffffe4;
+  --muted-cream: rgb(255 255 228 / 48%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+}
+
+body {
+  min-height: 100%;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--cream);
+  color: #000000;
+}
+
+.font-menu {
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-anton), Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.font-editorial {
+  font-family: var(--font-gambarino), Georgia, "Times New Roman", serif;
+}
+
+.brand-page {
+  min-height: 100vh;
+  background: #000;
+  color: var(--cream);
+}
