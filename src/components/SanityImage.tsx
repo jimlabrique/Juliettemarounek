@@ -11,6 +11,19 @@ type SanityImageProps = {
   sizes?: string;
 };
 
+export function getOptimizedSanityImageUrl(url: string, width = 2400) {
+  if (!url.startsWith("https://cdn.sanity.io/images/")) {
+    return url;
+  }
+
+  const imageUrl = new URL(url);
+
+  imageUrl.searchParams.set("w", String(width));
+  imageUrl.searchParams.set("auto", "format");
+
+  return imageUrl.toString();
+}
+
 export function SanityImage({
   image,
   alt,
@@ -29,7 +42,7 @@ export function SanityImage({
 
   return (
     <Image
-      src={image.url}
+      src={getOptimizedSanityImageUrl(image.url)}
       alt={image.alt || alt}
       fill
       fetchPriority={imageFetchPriority}

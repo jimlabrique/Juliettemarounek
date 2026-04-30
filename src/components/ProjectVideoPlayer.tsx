@@ -37,7 +37,7 @@ export function ProjectVideoPlayer({
         poster={activePoster}
         label={`${projectTitle} ${activeTitle}`}
         autoPlay
-        className="aspect-video w-full overflow-hidden rounded-[18px]"
+        className="aspect-video w-full overflow-hidden"
         controls
         mediaClassName="object-cover"
         priorityPoster

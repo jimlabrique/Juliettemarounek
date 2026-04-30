@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { ProjectStillsGallery } from "@/components/ProjectStillsGallery";
 import { ProjectVideoPlayer } from "@/components/ProjectVideoPlayer";
-import { SanityImage } from "@/components/SanityImage";
 import { getProject, getProjectSlugs } from "@/sanity/data";
 import type { Project, ProjectVideo } from "@/sanity/types";
 
@@ -64,69 +64,52 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   const videos = getProjectVideos(project);
+  const projectDetails = [
+    { label: "Role", value: project.role },
+    { label: "Client", value: project.client },
+    { label: "Year", value: project.year },
+  ].filter((detail) => detail.value);
 
   return (
     <main className="brand-page px-5 pb-40 pt-[145px] md:px-[6.6vw] md:pt-[150px]">
       <h1 className="font-display static mb-10 text-[52px] uppercase leading-[0.95] tracking-normal text-[var(--cream)] md:text-[92px] lg:text-[120px]">
         {project.title}
       </h1>
-      <section className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-[3vw]">
-        <div>
-          <ProjectVideoPlayer
-            projectTitle={project.title}
-            videos={videos}
-            fallbackPoster={project.posterImage || project.thumbnail}
-          />
-        </div>
-        <aside className="flex flex-col self-start lg:min-h-[calc((83.8vw-360px)*9/16)]">
-          <dl className="font-menu grid gap-5 text-[16px] font-semibold uppercase leading-tight tracking-normal text-[var(--cream)] md:text-[22px]">
-            <div>
-              <dt className="text-[var(--muted-cream)]">Role</dt>
-              <dd>{project.role}</dd>
-            </div>
-            <div>
-              <dt className="text-[var(--muted-cream)]">Client</dt>
-              <dd>{project.client}</dd>
-            </div>
-            <div>
-              <dt className="text-[var(--muted-cream)]">Year</dt>
-              <dd>{project.year}</dd>
-            </div>
-          </dl>
+      <section className="grid gap-5">
+        <ProjectVideoPlayer
+          projectTitle={project.title}
+          videos={videos}
+          fallbackPoster={project.posterImage || project.thumbnail}
+        />
+        <div className="font-menu flex flex-col gap-5 text-[12px] font-semibold uppercase leading-none tracking-normal text-[var(--cream)] md:flex-row md:items-start md:justify-between md:text-[16px]">
+          {projectDetails.length > 0 ? (
+            <dl className="flex overflow-x-auto whitespace-nowrap [scrollbar-width:none] md:gap-x-9 [&::-webkit-scrollbar]:hidden">
+              {projectDetails.map((detail) => (
+                <div key={detail.label} className="mr-5 flex shrink-0 gap-2 last:mr-0 md:mr-0">
+                  <dt className="text-[var(--muted-cream)]">{detail.label}</dt>
+                  <dd>{detail.value}</dd>
+                </div>
+              ))}
+            </dl>
+          ) : null}
           {project.fullFilmUrl ? (
             <Link
               href={project.fullFilmUrl}
               target="_blank"
               rel="noreferrer"
-              className="font-menu mt-8 inline-flex self-start border-b border-[var(--cream)] pb-1 text-[16px] font-semibold uppercase leading-none tracking-normal transition-opacity hover:opacity-65 md:text-[20px] lg:mb-[42px] lg:mt-auto"
+              className="inline-flex shrink-0 self-start border-b border-[var(--cream)] pb-1 transition-opacity hover:opacity-65"
             >
               Watch full film
             </Link>
           ) : null}
-        </aside>
+        </div>
       </section>
       {project.credits ? (
-        <p className="font-editorial mt-10 whitespace-pre-line text-[24px] leading-[1.12] text-[var(--cream)]">
+        <p className="font-editorial mt-16 whitespace-pre-line text-[24px] leading-[1.12] text-[var(--cream)] md:mt-24">
           {project.credits}
         </p>
       ) : null}
-      {project.stills?.length ? (
-        <section className="mt-10 grid gap-5 sm:grid-cols-2">
-          {project.stills.map((still, index) => (
-            <div
-              key={`${still.url}-${index}`}
-              className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-zinc-950"
-            >
-              <SanityImage
-                image={still}
-                alt={`${project.title} still ${index + 1}`}
-                sizes="(min-width: 640px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-          ))}
-        </section>
-      ) : null}
+      <ProjectStillsGallery projectTitle={project.title} stills={project.stills} />
     </main>
   );
 }

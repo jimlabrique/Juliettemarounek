@@ -16,7 +16,7 @@ export default async function HomePage() {
         className="h-full w-full"
         priorityPoster
       />
-      <BrandLogo className="absolute left-[4vw] top-[150px] z-10 h-auto w-[92vw] max-w-none" />
+      <BrandLogo className="absolute left-[4vw] top-[var(--site-logo-top)] z-10 h-auto w-[92vw] max-w-none" />
     </main>
   );
 }

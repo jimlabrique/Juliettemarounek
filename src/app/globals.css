@@ -5,6 +5,8 @@
   --foreground: #ffffe4;
   --cream: #ffffe4;
   --muted-cream: rgb(255 255 228 / 48%);
+  --site-menu-top: 28px;
+  --site-logo-top: calc(var(--site-menu-top) + 30px);
 }
 
 @theme inline {
@@ -56,4 +58,10 @@ a {
   min-height: 100vh;
   background: #000;
   color: var(--cream);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --site-menu-top: 38px;
+  }
 }
