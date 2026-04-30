@@ -12,7 +12,7 @@ export default async function ContactPage() {
         <h1 className="sr-only">Contact</h1>
         <a
           href={`mailto:${email}`}
-          className="font-display block max-w-[96vw] break-words text-center text-[42px] uppercase leading-[0.98] tracking-normal text-[var(--cream)] transition-opacity hover:opacity-70 sm:text-[58px] md:text-[80px] lg:text-[96px]"
+          className="font-display block max-w-[96vw] whitespace-nowrap text-center text-[clamp(18px,5.2vw,84px)] uppercase leading-none tracking-normal text-[var(--cream)] transition-opacity hover:opacity-70"
         >
           {email}
         </a>

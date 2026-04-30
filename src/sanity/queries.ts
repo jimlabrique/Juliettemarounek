@@ -1,5 +1,8 @@
 const imageFields = `
   alt,
+  asset,
+  crop,
+  hotspot,
   "url": asset->url,
   "width": asset->metadata.dimensions.width,
   "height": asset->metadata.dimensions.height,

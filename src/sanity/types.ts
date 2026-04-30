@@ -1,5 +1,23 @@
 export type SanityImage = {
   alt?: string;
+  asset?: {
+    _ref?: string;
+    _id?: string;
+  };
+  crop?: {
+    _type?: string;
+    left: number;
+    bottom: number;
+    right: number;
+    top: number;
+  };
+  hotspot?: {
+    _type?: string;
+    width: number;
+    height: number;
+    x: number;
+    y: number;
+  };
   url?: string;
   width?: number;
   height?: number;

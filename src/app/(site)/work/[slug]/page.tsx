@@ -71,7 +71,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   ].filter((detail) => detail.value);
 
   return (
-    <main className="brand-page px-5 pb-40 pt-[145px] md:px-[6.6vw] md:pt-[150px]">
+    <main className="brand-page max-w-full overflow-x-hidden px-5 pb-40 pt-[145px] md:overflow-x-visible md:px-[6.6vw] md:pt-[150px]">
       <h1 className="font-display static mb-10 text-[52px] uppercase leading-[0.95] tracking-normal text-[var(--cream)] md:text-[92px] lg:text-[120px]">
         {project.title}
       </h1>
@@ -81,13 +81,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           videos={videos}
           fallbackPoster={project.posterImage || project.thumbnail}
         />
-        <div className="font-menu flex flex-col gap-5 text-[12px] font-semibold uppercase leading-none tracking-normal text-[var(--cream)] md:flex-row md:items-start md:justify-between md:text-[16px]">
+        <div className="font-menu flex min-w-0 flex-col gap-5 text-[12px] font-semibold uppercase leading-none tracking-normal text-[var(--cream)] md:flex-row md:items-start md:justify-between md:text-[16px]">
           {projectDetails.length > 0 ? (
-            <dl className="flex overflow-x-auto whitespace-nowrap [scrollbar-width:none] md:gap-x-9 [&::-webkit-scrollbar]:hidden">
+            <dl className="grid min-w-0 max-w-full gap-2 whitespace-normal md:flex md:overflow-x-auto md:whitespace-nowrap md:gap-x-9 md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden">
               {projectDetails.map((detail) => (
-                <div key={detail.label} className="mr-5 flex shrink-0 gap-2 last:mr-0 md:mr-0">
-                  <dt className="text-[var(--muted-cream)]">{detail.label}</dt>
-                  <dd>{detail.value}</dd>
+                <div key={detail.label} className="flex min-w-0 flex-wrap gap-x-2 gap-y-1 md:mr-0 md:flex-nowrap md:shrink-0">
+                  <dt className="shrink-0 text-[var(--muted-cream)]">{detail.label}</dt>
+                  <dd className="min-w-0 break-words">{detail.value}</dd>
                 </div>
               ))}
             </dl>

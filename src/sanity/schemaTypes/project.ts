@@ -47,6 +47,7 @@ export const project = defineType({
       name: "thumbnail",
       title: "Thumbnail",
       type: "image",
+      description: "Use the hotspot to choose what stays visible on mobile project covers.",
       options: {
         hotspot: true,
       },

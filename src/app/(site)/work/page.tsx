@@ -56,6 +56,7 @@ export default async function WorkPage() {
                 image={image}
                 alt={`${project.title} thumbnail`}
                 preload={preloadImage}
+                hotspotMode="mobile"
                 sizes="100vw"
                 className="object-cover transition duration-700 ease-out group-hover:scale-[1.015] group-hover:opacity-70 group-focus-visible:scale-[1.015] group-focus-visible:opacity-70"
               />
