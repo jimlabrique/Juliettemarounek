@@ -39,19 +39,27 @@ export async function generateMetadata({
 function getProjectVideos(project: Project): ProjectVideo[] {
   const videos = project.videos?.filter((item) => item.video?.url) ?? [];
 
-  if (videos.length > 0) {
+  if (!project.mainVideo?.url) {
     return videos;
   }
 
-  if (!project.mainVideo?.url) {
-    return [];
-  }
+  const mainVideoEntry = videos.find(
+    (item) => item.video?.url === project.mainVideo?.url,
+  );
+  const additionalVideos = videos.filter(
+    (item) => item.video?.url !== project.mainVideo?.url,
+  );
 
   return [
     {
+      title:
+        mainVideoEntry?.title ||
+        (additionalVideos.length > 0 ? "Main video" : undefined),
       video: project.mainVideo,
-      posterImage: project.posterImage || project.thumbnail,
+      posterImage:
+        mainVideoEntry?.posterImage || project.posterImage || project.thumbnail,
     },
+    ...additionalVideos,
   ];
 }
 

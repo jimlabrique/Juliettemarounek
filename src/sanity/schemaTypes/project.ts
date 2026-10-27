@@ -56,17 +56,19 @@ export const project = defineType({
     }),
     defineField({
       name: "mainVideo",
-      title: "Main video (legacy fallback)",
+      title: "Main video",
       type: "file",
       options: {
         accept: "video/mp4,video/webm",
       },
-      description: "Used when the Videos field below is empty.",
+      description: "Shown first, before any additional videos.",
     }),
     defineField({
       name: "videos",
-      title: "Videos",
+      title: "Additional videos",
       type: "array",
+      description:
+        "Add teasers, alternate versions, or other videos. These appear after the main video, in the order below.",
       of: [
         defineField({
           name: "videoItem",
@@ -118,7 +120,7 @@ export const project = defineType({
             return true;
           }
 
-          return "Add at least one video.";
+          return "Add a main video or at least one additional video.";
         }),
     }),
     defineField({
